@@ -1,0 +1,17 @@
+# This is how to make env
+```bash
+# 1 
+pip install virtualenv
+
+# 2
+virtualenv <path/to/new/environment>
+
+# 3
+source <path/to/new/environment>/bin/activate
+
+# 4
+pip install <package1> <package2> ...
+
+# 5
+deactivate
+```bash
