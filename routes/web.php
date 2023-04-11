@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/home', function () {
+    return view('home', [
+        'data' => Product::all(),
+        'joins' => Product::join('categories','products.category_id','=', 'categories.id')
+                        ->get(['products.Product_name' , 'categories.Category_name'])
+    ]);
 });
