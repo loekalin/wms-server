@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Supplier>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ShipmentDetail>
  */
-class SupplierFactory extends Factory
+class IssuingDetailFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,9 @@ class SupplierFactory extends Factory
     public function definition(): array
     {
         return [
-            'Supplier_uuid' => fake()->uuid(),
-            'Supplier_name' => fake()->name(),
+            'IssuingDetail_uuid' => fake()->uuid(),
+            'issuing_id' => mt_rand(1,5),
+            'product_id' => mt_rand(1,5),
         ];
     }
 }

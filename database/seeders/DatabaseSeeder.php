@@ -5,10 +5,17 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\Customer;
+use App\Models\Issuing;
+use App\Models\IssuingDetail;
 use App\Models\Merk;
 use App\Models\Product;
+use App\Models\Receiving;
+use App\Models\ReceivingDetail;
 use App\Models\Satuan;
+use App\Models\Stock;
 use App\Models\SubCategory;
+use App\Models\Supplier;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,7 +32,14 @@ class DatabaseSeeder extends Seeder
         Merk::factory(5)->create(); 
         Satuan::factory(5)->create();
         SubCategory::factory(5)->create();
-
+        Supplier::factory(5)->create();
+        Stock::factory(5)->create();
+        Issuing::factory(5)->create();
+        IssuingDetail::factory(5)->create();
+        Receiving::factory(5)->create();
+        ReceivingDetail::factory(5)->create();
+        Customer::factory(5)->create();
+        
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

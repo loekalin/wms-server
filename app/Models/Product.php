@@ -33,4 +33,19 @@ class Product extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function issuingDetails()
+    {
+        return $this->hasMany(IssuingDetail::class);
+    }
+    
+    public function receivingDetails()
+    {
+        return $this->hasMany(ReceivingDetail::class);
+    }
+
+    public function stock()
+    {
+        return $this->hasOne(Stock::class);
+    }
 }

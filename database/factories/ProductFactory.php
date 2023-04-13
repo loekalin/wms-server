@@ -24,6 +24,7 @@ class ProductFactory extends Factory
             'merk_id' => mt_rand(1,5),
             'satuan_id' => mt_rand(1,5),
             'sub_category_id' => mt_rand(1,5),
+            'supplier_id' => mt_rand(1,5),
         ];
     }
 }

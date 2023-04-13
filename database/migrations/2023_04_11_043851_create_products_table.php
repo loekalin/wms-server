@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('merk_id');
             $table->foreignId('satuan_id');
             $table->foreignId('sub_category_id');
-            // $table->foreignId('supplier_id');
+            $table->foreignId('supplier_id');
             $table->timestamps();
         });
     }
