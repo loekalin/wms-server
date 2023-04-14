@@ -17,8 +17,8 @@ class SatuanFactory extends Factory
     public function definition(): array
     {
         return [
-            'Satuan_uuid' => fake()->uuid(),
-            'Satuan_name' => fake()->jobTitle()
+            'satuan_uuid' => fake()->uuid(),
+            'satuan_name' => fake()->jobTitle()
         ];
     }
 }

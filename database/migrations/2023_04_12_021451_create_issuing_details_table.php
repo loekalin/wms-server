@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('issuing_details', function (Blueprint $table) {
             $table->id();
-            $table->uuid('IssuingDetail_uuid')->unique();
+            $table->uuid('issuingdetail_uuid')->unique();
             $table->foreignId('issuing_id');
             $table->foreignId('product_id');
         });

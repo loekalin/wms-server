@@ -17,8 +17,8 @@ class SubCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'SubCategory_uuid' => fake()->uuid(),
-            'SubCategory_name' => fake()->name(),
+            'subcategory_uuid' => fake()->uuid(),
+            'subcategory_name' => fake()->name(),
         ];
     }
 }

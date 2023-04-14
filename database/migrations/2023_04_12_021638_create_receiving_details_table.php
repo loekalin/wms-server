@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('receiving_details', function (Blueprint $table) {
             $table->id();
-            $table->uuid('ReceivingDetail_uuid');
+            $table->uuid('receivingdetail_uuid');
             $table->foreignId('receiving_id');
             $table->foreignId('product_id');
         });

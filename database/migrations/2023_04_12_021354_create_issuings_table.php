@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('issuings', function (Blueprint $table) {
             $table->id();
-            $table->uuid('Issuing_uuid')->unique();
-            $table->timestamp('Issuing_date');
+            $table->uuid('issuing_uuid')->unique();
+            $table->timestamp('issuing_date');
             // $table->foreignId('receiving_id');
-            $table->foreignId('customer_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

@@ -11,9 +11,9 @@ class Issuing extends Model
     protected $guarded = ['id'];
 
 
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(user::class);
     }
 
     public function orders()
@@ -21,8 +21,8 @@ class Issuing extends Model
         return $this->hasMany(Order::class);
     }
 
-    public function shipmentDetail()
+    public function issuingdetail()
     {
-        return $this->hasOne(ShipmentDetail::class);
+        return $this->hasOne(IssuingDetail::class);
     }
 }

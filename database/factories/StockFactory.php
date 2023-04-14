@@ -17,8 +17,8 @@ class StockFactory extends Factory
     public function definition(): array
     {
         return [
-            'Stock_uuid' => fake()->uuid(),
-            'Stock_value' => mt_rand(1,1000),
+            'stock_uuid' => fake()->uuid(),
+            'stock_value' => mt_rand(1,1000),
             'product_id' => mt_rand(1,5)
         ];
     }

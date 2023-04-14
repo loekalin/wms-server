@@ -16,6 +16,7 @@ use App\Models\Satuan;
 use App\Models\Stock;
 use App\Models\SubCategory;
 use App\Models\Supplier;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -38,7 +39,8 @@ class DatabaseSeeder extends Seeder
         IssuingDetail::factory(5)->create();
         Receiving::factory(5)->create();
         ReceivingDetail::factory(5)->create();
-        Customer::factory(5)->create();
+        User::factory(5)->create();
+        // Customer::factory(5)->create();
         
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

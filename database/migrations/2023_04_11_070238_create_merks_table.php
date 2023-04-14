@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('merks', function (Blueprint $table) {
             $table->id();
-            $table->uuid('Merk_uuid')->unique();
-            $table->string('Merk_name',50);
+            $table->uuid('merk_uuid')->unique();
+            $table->string('merk_name',50);
         });
     }
 

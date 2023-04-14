@@ -17,8 +17,8 @@ class MerkFactory extends Factory
     public function definition(): array
     {
         return [
-            'Merk_uuid' => fake()->uuid(),
-            'Merk_name' => fake()->company(),
+            'merk_uuid' => fake()->uuid(),
+            'merk_name' => fake()->company(),
         ];
     }
 }

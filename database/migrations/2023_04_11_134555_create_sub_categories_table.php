@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
-            $table->uuid('SubCategory_uuid')->unique();
-            $table->string('SubCategory_name',191);
+            $table->uuid('subcategory_uuid')->unique();
+            $table->string('subcategory_name',191);
         });
     }
 

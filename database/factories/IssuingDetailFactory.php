@@ -17,7 +17,7 @@ class IssuingDetailFactory extends Factory
     public function definition(): array
     {
         return [
-            'IssuingDetail_uuid' => fake()->uuid(),
+            'issuingdetail_uuid' => fake()->uuid(),
             'issuing_id' => mt_rand(1,5),
             'product_id' => mt_rand(1,5),
         ];

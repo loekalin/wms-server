@@ -17,8 +17,8 @@ class SupplierFactory extends Factory
     public function definition(): array
     {
         return [
-            'Supplier_uuid' => fake()->uuid(),
-            'Supplier_name' => fake()->name(),
+            'supplier_uuid' => fake()->uuid(),
+            'supplier_name' => fake()->name(),
         ];
     }
 }

@@ -17,7 +17,7 @@ class ReceivingDetailFactory extends Factory
     public function definition(): array
     {
         return [
-            'ReceivingDetail_uuid' => fake()->uuid(),
+            'receivingdetail_uuid' => fake()->uuid(),
             'receiving_id' => mt_rand(1,5),
             'product_id' => mt_rand(1,5)
         ];

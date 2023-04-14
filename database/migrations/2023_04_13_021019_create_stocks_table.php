@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->uuid('Stock_uuid')->unique();
-            $table->bigInteger('Stock_value');
+            $table->uuid('stock_uuid')->unique();
+            $table->bigInteger('stock_value');
             $table->foreignId('product_id');
             $table->timestamps();
         });

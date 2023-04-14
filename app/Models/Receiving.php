@@ -12,12 +12,12 @@ class Receiving extends Model
     protected $guarded = ['id'];
 
 
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function receivingDetail()
+    public function receivingdetail()
     {
         return $this->hasOne(ReceivingDetail::class);
     }

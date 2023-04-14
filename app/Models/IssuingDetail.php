@@ -13,9 +13,9 @@ class IssuingDetail extends Model
 
     public $timestamps = false;
 
-    public function shipment()
+    public function issuing()
     {
-        return $this->belongsTo(Shipment::class);
+        return $this->belongsTo(Issuing::class);
     }
 
     public function product()

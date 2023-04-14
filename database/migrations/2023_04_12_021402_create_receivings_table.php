@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('receivings', function (Blueprint $table) {
             $table->id();
-            $table->uuid('Receiving_uuid');
-            $table->foreignId('customer_id');
-            $table->timestamp('Receiving_date');
+            $table->uuid('receiving_uuid');
+        $table->foreignId('user_id');
+            $table->timestamp('receiving_date');
             $table->timestamps();
         });
     }
