@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'user_uuid' => fake()->uuid(),
             'username' => fake()->userName(),
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('hai'),
             'role' => fake()->randomElement(['admin','user'])
 
         ];

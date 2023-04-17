@@ -9,7 +9,7 @@ class Receiving extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'uuid'];
 
 
     public function user()

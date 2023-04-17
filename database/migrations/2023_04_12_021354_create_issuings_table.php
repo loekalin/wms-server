@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->uuid('issuing_uuid')->unique();
             $table->timestamp('issuing_date');
-            // $table->foreignId('receiving_id');
             $table->foreignId('user_id');
             $table->timestamps();
         });

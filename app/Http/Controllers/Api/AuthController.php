@@ -20,14 +20,12 @@ class AuthController extends Controller
                 'password' => 'required',
             ]);    
         } catch (\Throwable $e) {
-            return response()->json(['error' => $e->getMessage()]);
+            return response()->json(['error' => $e->getMessage()],500);
         }
 
         $credentials = $request->only('username', 'password');
         if(!$token = Auth::guard('api')->attempt($credentials)) {
-            return response()->json([
-                'error' => 'Login failed'
-            ]);
+            return response(['error' => 'Login Failed!']);
         }
 
         return response()->json([
