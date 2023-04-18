@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             $table->uuid('supplier_uuid')->unique();
-            $table->string('supplier_name',191);
+            $table->string('supplier_name',191)->unique();
         });
     }
 

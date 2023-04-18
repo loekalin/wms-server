@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('merks', function (Blueprint $table) {
             $table->id();
             $table->uuid('merk_uuid')->unique();
-            $table->string('merk_name',50);
+            $table->string('merk_name',50)->unique();
         });
     }
 
