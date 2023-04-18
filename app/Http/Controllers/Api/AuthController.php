@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('username', 'password');
         if(!$token = Auth::guard('api')->attempt($credentials)) {
-            return response(['error' => 'Login Failed!']);
+            return response(['error' => 'Login Failed!'],500);
         }
 
         return response()->json([

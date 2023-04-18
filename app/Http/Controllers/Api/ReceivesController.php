@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Stock;
 use App\Models\Satuan;
 use App\Models\Product;
 use App\Models\Category;
@@ -117,19 +118,26 @@ class ReceivesController extends Controller
     {
         try {
             $data = $request->validate([
-                'category' => 'required',
-                'sub_category' => 'required',
                 'product' => 'required',
                 'jumlah' => 'required',
-                'satuan' => 'required',
-                'receiving_date' => 'required|date',
             ]);
 
-            
 
 
-        } catch (\Throwable $th) {
-            //throw $th;
+            $recDetail = ReceivingDetail::where('receiving_id', $receiving->id)->update([
+                'product_id' => $data['product'],
+            ]);
+
+            $stock = Stock::where('product_id', $data['product'])->update([
+                'stock_value' => $data['jumlah'],
+            ]);
+            return response()->json([
+                'receiving' => $receiving,
+                'receiving_detail' => $recDetail,
+                'stock' => $stock
+            ],200);
+        } catch (\Throwable $e) {
+            return response(['error' => $e->getMessage()],500);
         }
     }
 
@@ -138,6 +146,15 @@ class ReceivesController extends Controller
      */
     public function destroy(Receiving $receiving)
     {
-        //
+        try {
+            $receiving->delete();
+            ReceivingDetail::where('receiving_id', $receiving->id)->delete();
+        
+            return response()->json([
+                'message' => 'Data berhasil dihapus'
+            ],200);
+        } catch (\Throwable $e) {
+            return response(['error' => $e->getMessage()],500);
+        }
     }
 }

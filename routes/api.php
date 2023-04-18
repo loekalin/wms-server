@@ -34,6 +34,8 @@ Route::controller(ApiReceivesController::class)->group(function () {
     Route::get('/receiving/create', 'create');
     Route::post('/receivings', 'store');
     Route::get('/receivings/{receiving:receiving_uuid}/edit' , 'edit');
+    Route::patch('/receivings/{receiving:receiving_uuid}' , 'update');
+    Route::delete('/receivings/{receiving:receiving_uuid}' , 'destroy');
 })->middleware('auth:api');
 
 Route::controller(IssuingController::class)->group(function () {
@@ -41,14 +43,7 @@ Route::controller(IssuingController::class)->group(function () {
     Route::get('/issuings/{issuing:issuing_uuid}', 'show');
     Route::get('/issuing/create', 'create');
     Route::post('/issuings', 'store');
+    Route::get('/issuings/{issuing:issuing_uuid}/edit' , 'edit');
+    Route::patch('/issuings/{issuing:issuing_uuid}' , 'update');
+    Route::delete('/issuings/{issuing:issuing_uuid}' , 'destroy');
 })->middleware('auth:api');
-
-Route::post('/sub_categories' ,function (Request $request) {
-    $data = $request->validate([
-        'subcategory_uuid' => fake()->uuid(),
-        'subcategory_name' => 'required|unique:sub_categories,subcategory_name',
-    ]);
-
-    $sub_categories = SubCategory::create($data);
-    return response()->json($sub_categories,200);
-});
