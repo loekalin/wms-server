@@ -74,7 +74,6 @@ class IssuingController extends Controller
     public function show(Issuing $issuing)
     {
         try {
-            
             $data = Issuing::join('issuing_details as d', 'issuings.id', '=', 'd.issuing_id')
             ->join('products AS p', 'p.id', '=' , 'd.product_id')
             ->join('suppliers AS s', 's.id', '=' , 'p.supplier_id')

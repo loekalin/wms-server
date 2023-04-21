@@ -52,7 +52,7 @@ class ReceivesController extends Controller
                 'receiving_date' => $data['receiving_date'],
                 'receiving_uuid' => fake()->uuid(),
             ]);
-            
+
             $receiving_detail = ReceivingDetail::create([
                 'receiving_id' => $receiving->id,
                 'product_id' => $data['product'],
@@ -63,6 +63,7 @@ class ReceivesController extends Controller
                 'receiving' => $receiving,
                 'receiving_detail' => $receiving_detail
             ],200);
+
         } catch (\Throwable $e) {
             return response(['error' => $e->getMessage()],500);
         }
@@ -74,8 +75,6 @@ class ReceivesController extends Controller
     public function show(Receiving $receiving)
     {
         try {
-            // $id = $receiving->id;
-            // dd($receiving);
             $data = Receiving::join('receiving_details as d', 'receivings.id', '=', 'd.receiving_id')
             ->join('products AS p', 'p.id', '=' , 'd.product_id')
             ->join('suppliers AS s', 's.id', '=' , 'p.supplier_id')
@@ -95,7 +94,7 @@ class ReceivesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Receiving $receiving)
+    public function edit(Receiving $receiving)
     {
         $data =  Receiving::join('receiving_details as d', 'receivings.id', '=', 'd.receiving_id')
             ->join('products AS p', 'p.id', '=' , 'd.product_id')
