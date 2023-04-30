@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'product_uuid' => fake()->uuid(),
             'product_name' => fake()->name(),
             'category_id' => mt_rand(1,5),
-            'merk_id' => mt_rand(1,5),
+            // 'merk_id' => mt_rand(1,5),
             'satuan_id' => mt_rand(1,5),
             'sub_category_id' => mt_rand(1,5),
             'supplier_id' => mt_rand(1,5),

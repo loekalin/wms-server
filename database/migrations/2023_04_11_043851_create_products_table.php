@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('product_uuid')->unique();
             $table->string('product_name',50)->unique();
             $table->foreignId('category_id');
-            $table->foreignId('merk_id');
+            // $table->foreignId('merk_id');
             $table->foreignId('satuan_id');
             $table->foreignId('sub_category_id');
             $table->foreignId('supplier_id');

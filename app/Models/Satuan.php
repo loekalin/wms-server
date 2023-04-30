@@ -10,7 +10,7 @@ class Satuan extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $guarded = ['id', 'Satuan_uuid'];
+    protected $guarded = ['id'];
 
     public function products()
     {
