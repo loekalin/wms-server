@@ -24,12 +24,12 @@ class ReceivesController extends Controller
 
     public function create()
     {
-        return response()->json([
-                'product' => Product::join('categories AS c', 'products.category_id', '=' , 'c.id')
-                            ->join('sub_categories AS sc', 'products.sub_category_id', '=' , 'sc.id')
-                            ->join('satuans AS st', 'products.satuan_id', '=' , 'st.id')
-                            ->get(['products.*', 'c.category_name AS category', 'sc.subcategory_name AS sub_category', 'st.satuan_name AS satuan'])
-        ]);
+        $data =  Product::join('categories AS c', 'products.category_id', '=' , 'c.id')
+        ->join('sub_categories AS sc', 'products.sub_category_id', '=' , 'sc.id')
+        ->join('satuans AS st', 'products.satuan_id', '=' , 'st.id')
+        ->get(['products.*', 'c.category_name AS category', 'sc.subcategory_name AS sub_category', 'st.satuan_name AS satuan']);
+        return response($data,200);
+                
     }
 
     /**
