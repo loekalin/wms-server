@@ -59,9 +59,13 @@ class ReceivesController extends Controller
                 'receivingdetail_uuid' => fake()->uuid(),
             ]);
 
+            Stock::where('product_id', $data['product'])->update([
+                'stock_value' => DB::raw('stock_value + '.$data['jumlah'])
+            ]);
+
             return response()->json([
                 'receiving' => $receiving,
-                'receiving_detail' => $receiving_detail
+                'receiving_detail' => $receiving_detail,
             ],200);
 
         } catch (\Throwable $e) {
@@ -119,17 +123,17 @@ class ReceivesController extends Controller
             $data = $request->validate([
                 'product' => 'required',
                 'jumlah' => 'required',
+                'jumlah_lama' => 'required' 
             ]);
-
-
 
             $recDetail = ReceivingDetail::where('receiving_id', $receiving->id)->update([
                 'product_id' => $data['product'],
             ]);
 
             $stock = Stock::where('product_id', $data['product'])->update([
-                'stock_value' => $data['jumlah'],
+                'stock_value' => DB::raw('stock_value - '.$data['jumlah_lama'] . ' + '. $data['jumlah'])
             ]);
+
             return response()->json([
                 'receiving' => $receiving,
                 'receiving_detail' => $recDetail,
