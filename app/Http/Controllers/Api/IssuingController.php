@@ -59,6 +59,10 @@ class IssuingController extends Controller
                 'product_id' => $data['product']
             ]);
 
+            Stock::where('product_id', $data['product'])->update([
+                'stock_value' => DB::raw('stock_value - '.$data['jumlah'])
+            ]);
+
             return response()->json([
                 'data' => $issuing,
                 'detail' => $issuingDetail
@@ -112,36 +116,29 @@ class IssuingController extends Controller
      */
     public function update(Request $request, Issuing $issuing)
     {
-        $data = $request->validate([
-            'product' => 'required',
-            'jumlah' => 'required',
-        ]);
-
-
-        $issuingDetail = IssuingDetail::where('issuing_id', $issuing->id)->update([
-            'product_id' => $data['product']
-        ]);
-        
-        // $oldValue = Stock::where('product_id', $data['product'])->select('stock_value')->first();
-        // $outValue = (int)$data['jumlah'];
-        // $newValue  = $oldValue - $outValue;
-        // // if($data['jumlah' != $jumlah->stock_value]) {
-        // //     $newValue
-        // // }
-
-        // $stock = Stock::where('product_id', $data['product'])->update([
-        //     'stock_value' => $newValue
-        // ]);
-
-        $stock = Stock::where('product_id', $data['product'])->update([
-            'stock_value' => DB::raw('stock_value - '.$data['jumlah'])
-        ]);
-
-        return response()->json([
-            'data' => $issuing,
-            'detail' => $issuingDetail,
-            'stock' => $stock
-        ]);
+        try {
+            $data = $request->validate([
+                'product' => 'required',
+                'jumlah' => 'required',
+                'jumlah_lama' => 'required'
+            ]);
+    
+            $issuingDetail = IssuingDetail::where('issuing_id', $issuing->id)->update([
+                'product_id' => $data['product']
+            ]);
+            
+            $stock = Stock::where('product_id', $data['product'])->update([
+                'stock_value' => DB::raw('stock_value + '.$data['jumlah_lama'] . ' - '. $data['jumlah'])
+            ]);
+    
+            return response()->json([
+                'data' => $issuing,
+                'detail' => $issuingDetail,
+                'stock' => $stock
+            ]);
+        } catch (\Throwable $e) {
+            return response(['error' => $e->getMessage()],500);
+        }
     }
 
     /**
