@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\IssuingController;
 use App\Http\Controllers\Api\MasterController;
+use App\Http\Controllers\Api\MasterUserController;
 use App\Http\Controllers\Api\ReceivesController as ApiReceivesController;
 
 /*
@@ -51,4 +52,9 @@ Route::controller(IssuingController::class)->group(function () {
 
 Route::controller(MasterController::class)->group(function () {
     Route::post('/master','store');
+})->middleware('auth:api');
+
+Route::controller(MasterUserController::class)->group(function () {
+    Route::get('/users' , 'index');
+    Route::post('/user','store');
 })->middleware('auth:api');

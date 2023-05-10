@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Satuan;
 use App\Models\Stock;
 use App\Models\SubCategory;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
@@ -22,6 +23,7 @@ class MasterController extends Controller
                 'product_name' => 'required|unique:products',
                 'jumlah' => 'required',
                 'satuan_name' => 'required|unique:satuans',
+                'supplier' => 'required'
             ]);
 
             if($data) {
@@ -40,6 +42,11 @@ class MasterController extends Controller
                     'satuan_name' => $data['satuan_name']
                 ]);
     
+                $supplier = Supplier::create([
+                    'supplier_uuid' => fake()->uuid(),
+                    'supplier_name' => $data['supplier_name']
+                ]);
+                
                 $p = Product::create([
                     'product_uuid' => fake()->uuid(),
                     'product_name' => $data['product_name'],
@@ -47,7 +54,7 @@ class MasterController extends Controller
                     'sub_category_id' => $subCategory->id,
                     // 'merk_id' => 1,
                     'satuan_id' => $satuan->id,
-                    'supplier_id' => 1,
+                    'supplier_id' => $supplier->id,
                 ]);
     
                 $stock = Stock::create([
@@ -55,12 +62,14 @@ class MasterController extends Controller
                     'stock_value' => $data['jumlah'],
                     'product_id' => $p->id
                 ]);
+
                 return response()->json([
                     'product' => $p,
                     'category' => $category,
                     'sub_cat' => $subCategory,
                     'satuan' => $satuan,
                     'stock' => $stock,
+                    'supplier' => $supplier,
                 ]);
             }
         } catch (\Throwable $e) {
