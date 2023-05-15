@@ -23,7 +23,8 @@ class ReceivesController extends Controller
         ->join('sub_categories as sc', 'p.sub_category_id' , '=' , 'sc.id')
         ->join('satuans as st', 'p.satuan_id' , '=' , 'st.id')
         ->orderBy('receivings.created_at' , 'DESC')
-        ->get(['p.product_name as name' , 'sc.subcategory_name as sub_category' , 'receivings.receiving_uuid as uuid', 'st.satuan_name as satuan', 'receivings.receiving_date as date']);
+        ->select('p.product_name as name' , 'sc.subcategory_name as sub_category' , 'receivings.receiving_uuid as uuid', 'st.satuan_name as satuan', 'receivings.receiving_date as date')
+        ->paginate(10);
         return response()->json($data,200);
     }
 

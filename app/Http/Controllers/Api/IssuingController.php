@@ -23,7 +23,8 @@ class IssuingController extends Controller
         ->join('sub_categories as sc', 'p.sub_category_id' , '=' , 'sc.id')
         ->join('satuans as st', 'p.satuan_id' , '=' , 'st.id')
         ->orderBy('issuings.created_at' , 'DESC')
-        ->get(['p.product_name as name' , 'sc.subcategory_name as sub_category' , 'issuings.issuing_uuid as uuid', 'st.satuan_name as satuan', 'issuings.issuing_date as date']);
+        ->select('p.product_name as name' , 'sc.subcategory_name as sub_category' , 'issuings.issuing_uuid as uuid', 'st.satuan_name as satuan', 'issuings.issuing_date as date')
+        ->paginate(10);
         return response($data,200);
     }
 
