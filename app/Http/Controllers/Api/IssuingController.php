@@ -18,7 +18,12 @@ class IssuingController extends Controller
      */
     public function index()
     {
-        $data = Issuing::latest()->get();
+        $data = Issuing::join('issuing_details as isd', 'issuings.id', '=' , 'isd.issuing_id')
+        ->join('products as p', 'isd.product_id' , '=' , 'p.id')
+        ->join('sub_categories as sc', 'p.sub_category_id' , '=' , 'sc.id')
+        ->join('satuans as st', 'p.satuan_id' , '=' , 'st.id')
+        ->orderBy('issuings.created_at' , 'DESC')
+        ->get(['p.product_name as name' , 'sc.subcategory_name as sub_category' , 'issuings.issuing_uuid as uuid', 'st.satuan_name as satuan', 'issuings.issuing_date as date']);
         return response($data,200);
     }
 
