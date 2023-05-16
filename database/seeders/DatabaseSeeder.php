@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         Stock::factory(5)->create();
         Issuing::factory(5)->create();
         IssuingDetail::factory(5)->create();
-        Receiving::factory(5)->create();
+        Receiving::factory(1000)->create();
         ReceivingDetail::factory(5)->create();
         User::factory(5)->create();
         // Customer::factory(5)->create();
