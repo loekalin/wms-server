@@ -28,17 +28,17 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        Product::factory(5)->create();
+        Product::factory(10)->create();
         Category::factory(5)->create();
         Merk::factory(5)->create(); 
         Satuan::factory(5)->create();
-        SubCategory::factory(5)->create();
+        SubCategory::factory(10)->create();
         Supplier::factory(5)->create();
         Stock::factory(5)->create();
         Issuing::factory(5)->create();
         IssuingDetail::factory(5)->create();
-        Receiving::factory(1000)->create();
-        ReceivingDetail::factory(5)->create();
+        Receiving::factory(10)->create();
+        ReceivingDetail::factory(10)->create();
         User::factory(5)->create();
         // Customer::factory(5)->create();
         

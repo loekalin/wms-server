@@ -19,7 +19,7 @@ class MasterUserController extends Controller
         return response($data,200);
     }
 
-    /**
+    /**c
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

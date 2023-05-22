@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
             // 'id' => fake()->
             'product_uuid' => fake()->uuid(),
-            'product_name' => fake()->name(),
+            'product_name' => fake()->unique()->name(),
             'category_id' => mt_rand(1,5),
             // 'merk_id' => mt_rand(1,5),
             'satuan_id' => mt_rand(1,5),

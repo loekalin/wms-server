@@ -17,7 +17,7 @@ class IssuingFactory extends Factory
     public function definition(): array
     {
         return [
-            'issuing_uuid' => fake()->uuid(),
+            'issuing_uuid' => fake()->unique()->uuid(),
             'issuing_date' => fake()->dateTime(),
             'user_id' => mt_rand(1,5) ,
             // 'Issuin'

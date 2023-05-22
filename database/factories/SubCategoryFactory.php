@@ -18,7 +18,7 @@ class SubCategoryFactory extends Factory
     {
         return [
             'subcategory_uuid' => fake()->uuid(),
-            'subcategory_name' => fake()->name(),
+            'subcategory_name' => fake()->unique()->name(),
         ];
     }
 }
