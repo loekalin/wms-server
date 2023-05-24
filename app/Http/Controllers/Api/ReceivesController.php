@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ReceivesController extends Controller
 {
+    public function dashboard()
+    {
+        return $this->products();
+    }
     public function index()
     {
         $data = Receiving::join('receiving_details as rd', 'receivings.id', '=' , 'rd.receiving_id')

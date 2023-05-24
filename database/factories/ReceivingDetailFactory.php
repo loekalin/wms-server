@@ -18,8 +18,8 @@ class ReceivingDetailFactory extends Factory
     {
         return [
             'receivingdetail_uuid' => fake()->unique()->uuid(),
-            'receiving_id' => mt_rand(1,5),
-            'product_id' => mt_rand(1,5)
+            'receiving_id' => mt_rand(1, 5),
+            'product_id' => mt_rand(1, 5)
         ];
     }
 }

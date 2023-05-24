@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\IssuingController;
 use App\Http\Controllers\Api\MasterController;
 use App\Http\Controllers\Api\MasterUserController;
 use App\Http\Controllers\Api\ReceivesController as ApiReceivesController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,12 @@ Route::controller(AuthController::class)->group(function () {
     // Route::post('/logout', 'logout');
 })->middleware('guest');
 
+Route::middleware('auth:api')->group(function () {
+        // Route::get('/dashboard' , [Controller::class, 'dashboard']);
+});
+
 Route::controller(ApiReceivesController::class)->group(function () {
+    Route::get('/dashboard', 'dashboard');
     Route::get('/receivings', 'index');
     Route::get('/receivings/{receiving:receiving_uuid}', 'show');
     Route::get('/receiving/create', 'create');
