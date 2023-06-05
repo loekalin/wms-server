@@ -16,6 +16,8 @@ class Controller extends BaseController
         $product = Product::join('stocks as s','products.id', '=', 's.product_id')
         ->select('products.product_name as name', 's.stock_value as value')
         ->get();
-        return response()->json($product,200);
+
+        $data = $product->slice(0,15);
+        return response()->json($data,200);
     }
 }
